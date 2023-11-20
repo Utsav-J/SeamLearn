@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "592841196569",
+    "project_id": "learning-app-bloc-30ab2",
+    "storage_bucket": "learning-app-bloc-30ab2.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:592841196569:android:6607f4f62f69bdf4f25688",
+        "android_client_info": {
+          "package_name": "com.utsav.bloc_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPPPFDAx5sQvCZq2yZBzXpkryeXiyTuGg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
