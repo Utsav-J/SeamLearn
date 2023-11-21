@@ -66,7 +66,7 @@ class _SignInState extends State<SignIn> {
                         "Register",
                         'register',
                         () {
-                          Navigator.of(context).pushNamed("Register");
+                          Navigator.of(context).pushNamed("/register");
                         },
                       ),
                     ],

@@ -59,7 +59,8 @@ class SignInController {
 //
           if (user != null) {
             toastInfo(message: "Found you, user exists");
-            return;
+            Navigator.of(context)
+                .pushNamedAndRemoveUntil("/application", (route) => false);
           }
 //
 //  ~USER DOESNT EXIST

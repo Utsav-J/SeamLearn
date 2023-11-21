@@ -131,7 +131,7 @@ class _WelcomeState extends State<Welcome> {
               // we need to make changes so that we dont have a go back button to the previous page anymore
               // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MyHomePage()));
               Navigator.of(context)
-                  .pushNamedAndRemoveUntil("SignIn", (route) => false);
+                  .pushNamedAndRemoveUntil("/sign_in", (route) => false);
               // once we hit the myhomepage route, every other route will be removed, til now we have only explored the welcome page
             }
           },
