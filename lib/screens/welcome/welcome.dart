@@ -1,5 +1,7 @@
 // import 'package:bloc_app/main.dart';
 import 'package:bloc_app/common/values/colors.dart';
+import 'package:bloc_app/common/values/constants.dart';
+import 'package:bloc_app/screens/global.dart';
 import 'package:bloc_app/screens/welcome/bloc/welcome_bloc.dart';
 import 'package:bloc_app/screens/welcome/bloc/welcome_events.dart';
 import 'package:bloc_app/screens/welcome/bloc/welcome_states.dart';
@@ -130,6 +132,10 @@ class _WelcomeState extends State<Welcome> {
               //jump to the new screen
               // we need to make changes so that we dont have a go back button to the previous page anymore
               // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MyHomePage()));
+              Global.storageService
+                  .setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
+              print(
+                  "The value is: ${Global.storageService.getDeviceFirstOpen()}");
               Navigator.of(context)
                   .pushNamedAndRemoveUntil("/sign_in", (route) => false);
               // once we hit the myhomepage route, every other route will be removed, til now we have only explored the welcome page

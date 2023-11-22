@@ -24,55 +24,59 @@ class _SignInState extends State<SignIn> {
         child: SafeArea(
           child: Scaffold(
             appBar: buildAppBar(context, "Login"),
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                buildTPLogin(context),
-                Center(child: reusableText("or use your e-mail")),
-                Container(
-                  margin: EdgeInsets.only(top: 45.h),
-                  padding: EdgeInsets.symmetric(horizontal: 25.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      reusableText("Email"),
-                      buildTextField(
-                        "Email",
-                        "Enter your email address",
-                        "email",
-                        (value) {
-                          context.read<SignInBloc>().add(EmailEvent(value));
-                        },
-                      ),
-                      reusableText("Password"),
-                      buildTextField(
-                        "Password",
-                        "Enter your password",
-                        "password",
-                        (value) {
-                          context.read<SignInBloc>().add(PasswordEvent(value));
-                        },
-                      ),
-                      forgotPassword(),
-                      buildLoginAndRegButton(
-                        "Login",
-                        'login',
-                        () {
-                          SignInController(context: context)
-                              .handleSignIn('email');
-                        },
-                      ),
-                      buildLoginAndRegButton(
-                        "Register",
-                        'register',
-                        () {
-                          Navigator.of(context).pushNamed("/register");
-                        },
-                      ),
-                    ],
+            body: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  buildTPLogin(context),
+                  Center(child: reusableText("or use your e-mail")),
+                  Container(
+                    margin: EdgeInsets.only(top: 45.h),
+                    padding: EdgeInsets.symmetric(horizontal: 25.w),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        reusableText("Email"),
+                        buildTextField(
+                          "Email",
+                          "Enter your email address",
+                          "email",
+                          (value) {
+                            context.read<SignInBloc>().add(EmailEvent(value));
+                          },
+                        ),
+                        reusableText("Password"),
+                        buildTextField(
+                          "Password",
+                          "Enter your password",
+                          "password",
+                          (value) {
+                            context
+                                .read<SignInBloc>()
+                                .add(PasswordEvent(value));
+                          },
+                        ),
+                        forgotPassword(),
+                        buildLoginAndRegButton(
+                          "Login",
+                          'login',
+                          () {
+                            SignInController(context: context)
+                                .handleSignIn('email');
+                          },
+                        ),
+                        buildLoginAndRegButton(
+                          "Register",
+                          'register',
+                          () {
+                            Navigator.of(context).pushNamed("/register");
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),

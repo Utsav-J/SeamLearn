@@ -1,4 +1,6 @@
+import 'package:bloc_app/common/values/constants.dart';
 import 'package:bloc_app/common/widgets/toast_item.dart';
+import 'package:bloc_app/screens/global.dart';
 import 'package:bloc_app/screens/signin/bloc/sign_in_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/widgets.dart';
@@ -59,6 +61,8 @@ class SignInController {
 //
           if (user != null) {
             toastInfo(message: "Found you, user exists");
+            Global.storageService.setString(AppConstants.STORAGE_USER_TOKEN_KEY,
+                "123456"); // a random number for now //TODO implement firebase user token
             Navigator.of(context)
                 .pushNamedAndRemoveUntil("/application", (route) => false);
           }

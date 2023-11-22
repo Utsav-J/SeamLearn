@@ -25,72 +25,74 @@ class _RegisterState extends State<Register> {
         child: SafeArea(
           child: Scaffold(
             appBar: buildAppBar(context, "Register"),
-            body: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(
-                  height: 15.h,
-                ),
-                Center(child: reusableText("Enter your details to register")),
-                Container(
-                  margin: EdgeInsets.only(top: 25.h),
-                  padding: EdgeInsets.symmetric(horizontal: 25.w),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      reusableText("Username"),
-                      buildTextField(
-                        "Username",
-                        "Enter your username",
-                        "username",
-                        (value) {
-                          context
-                              .read<RegisterBloc>()
-                              .add(UsernameEvent(value));
-                        },
-                      ),
-                      reusableText("Email"),
-                      buildTextField(
-                        "Email",
-                        "Enter your email address",
-                        "email",
-                        (value) {
-                          context.read<RegisterBloc>().add(EmailEvent(value));
-                        },
-                      ),
-                      reusableText("Password"),
-                      buildTextField(
-                        "Password",
-                        "Enter your password",
-                        "password",
-                        (value) {
-                          context
-                              .read<RegisterBloc>()
-                              .add(PasswordEvent(value));
-                        },
-                      ),
-                      reusableText("Confirm Password"),
-                      buildTextField(
-                        "Password",
-                        "Re-enter your password to confirm",
-                        "password",
-                        (value) {
-                          context
-                              .read<RegisterBloc>()
-                              .add(RePasswordEvent(value));
-                        },
-                      ),
-                      buildLoginAndRegButton(
-                        "Sign Up",
-                        'login', // login marker is used to give it the blue color
-                        () {
-                          RegisterController(context).handleEmailRegister();
-                        },
-                      ),
-                    ],
+            body: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: 15.h,
                   ),
-                ),
-              ],
+                  Center(child: reusableText("Enter your details to register")),
+                  Container(
+                    margin: EdgeInsets.only(top: 25.h),
+                    padding: EdgeInsets.symmetric(horizontal: 25.w),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        reusableText("Username"),
+                        buildTextField(
+                          "Username",
+                          "Enter your username",
+                          "username",
+                          (value) {
+                            context
+                                .read<RegisterBloc>()
+                                .add(UsernameEvent(value));
+                          },
+                        ),
+                        reusableText("Email"),
+                        buildTextField(
+                          "Email",
+                          "Enter your email address",
+                          "email",
+                          (value) {
+                            context.read<RegisterBloc>().add(EmailEvent(value));
+                          },
+                        ),
+                        reusableText("Password"),
+                        buildTextField(
+                          "Password",
+                          "Enter your password",
+                          "password",
+                          (value) {
+                            context
+                                .read<RegisterBloc>()
+                                .add(PasswordEvent(value));
+                          },
+                        ),
+                        reusableText("Confirm Password"),
+                        buildTextField(
+                          "Password",
+                          "Re-enter your password to confirm",
+                          "password",
+                          (value) {
+                            context
+                                .read<RegisterBloc>()
+                                .add(RePasswordEvent(value));
+                          },
+                        ),
+                        buildLoginAndRegButton(
+                          "Sign Up",
+                          'login', // login marker is used to give it the blue color
+                          () {
+                            RegisterController(context).handleEmailRegister();
+                          },
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ),
