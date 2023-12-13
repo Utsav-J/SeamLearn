@@ -23,6 +23,7 @@ class _HomePageState extends State<HomePage> {
             generateHomeText("user"),
             buildSearchBar(),
             buildParallaxView(context, state),
+            buildCatalogView(),
           ],
         ),
       ),

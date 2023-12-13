@@ -180,53 +180,132 @@ Widget _sliderContainer({String imagePath = "assets/icons/Image.png"}) {
   );
 }
 
-class ParallaxRecipe extends StatelessWidget {
-  const ParallaxRecipe({super.key});
-  @override
-  Widget build(context) {
-    return SizedBox(
-      height: 100.h,
-      width: 275.w,
-      child: SingleChildScrollView(
-        scrollDirection: Axis.horizontal,
-        child: SizedBox(
-          height: 100.h,
-          width: 275.w,
-          child: const Row(
-            children: [
-              ListItemWidget(
-                  title: "First", itemImageName: "Image", stateText: "Ongoing"),
-            ],
-          ),
+Widget buildCatalogView() {
+  return Column(
+    children: [
+      Container(
+        margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(
+              "Choose your course",
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14.sp),
+            ),
+            GestureDetector(
+              child: const Text(
+                "See All",
+                style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: AppColors.primaryThirdElement),
+              ),
+            )
+          ],
         ),
       ),
-    );
-  }
+      Container(
+        margin: EdgeInsets.symmetric(horizontal: 20.w),
+        child: Row(
+          children: [
+            _reusableCatalogContainer(
+              "All",
+              AppColors.primaryElement,
+            ),
+            _reusableCatalogContainer(
+              "Popular",
+              AppColors.primaryBackground,
+              textColor: AppColors.primaryThirdElement,
+            ),
+            _reusableCatalogContainer(
+              "Newest",
+              AppColors.primaryBackground,
+              textColor: AppColors.primaryThirdElement,
+            )
+          ],
+        ),
+      )
+    ],
+  );
 }
 
-class ListItemWidget extends StatelessWidget {
-  final String title;
-  final String itemImageName;
-  final String stateText;
-  const ListItemWidget({
-    super.key,
-    required this.title,
-    required this.itemImageName,
-    required this.stateText,
-  });
-  @override
-  Widget build(context) {
-    return Stack(
-      children: [_buildBackgroundParallax(itemImageName)],
-    );
-  }
-}
-
-Widget _buildBackgroundParallax(String itemImageName) {
-  return Positioned.fill(
-    child: Image.asset(
-      "assets/images/$itemImageName.png",
-      fit: BoxFit.cover,
+Widget _reusableCatalogContainer(String mainText, Color boxColor,
+    {Color textColor = AppColors.primaryElementText}) {
+  return Container(
+    margin: EdgeInsets.only(right: 5.w),
+    height: 28.h,
+    // width: 40.w,
+    // constraints: BoxConstraints(
+    //   maxWidth: 80.w,
+    // ),
+    padding: EdgeInsets.symmetric(horizontal: 5.w),
+    decoration: BoxDecoration(
+      borderRadius: BorderRadius.circular(5.w),
+      // color: AppColors.primaryThirdElement.withOpacity(0.4),
+      color: boxColor,
+    ),
+    child: Center(
+      child: Text(
+        mainText,
+        style: TextStyle(
+          color: textColor,
+          fontWeight: FontWeight.bold,
+        ),
+      ),
     ),
   );
 }
+
+
+
+
+
+// class ParallaxRecipe extends StatelessWidget {
+//   const ParallaxRecipe({super.key});
+//   @override
+//   Widget build(context) {
+//     return SizedBox(
+//       height: 100.h,
+//       width: 275.w,
+//       child: SingleChildScrollView(
+//         scrollDirection: Axis.horizontal,
+//         child: SizedBox(
+//           height: 100.h,
+//           width: 275.w,
+//           child: const Row(
+//             children: [
+//               ListItemWidget(
+//                   title: "First", itemImageName: "Image", stateText: "Ongoing"),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+// class ListItemWidget extends StatelessWidget {
+//   final String title;
+//   final String itemImageName;
+//   final String stateText;
+//   const ListItemWidget({
+//     super.key,
+//     required this.title,
+//     required this.itemImageName,
+//     required this.stateText,
+//   });
+//   @override
+//   Widget build(context) {
+//     return Stack(
+//       children: [_buildBackgroundParallax(itemImageName)],
+//     );
+//   }
+// }
+
+// Widget _buildBackgroundParallax(String itemImageName) {
+//   return Positioned.fill(
+//     child: Image.asset(
+//       "assets/images/$itemImageName.png",
+//       fit: BoxFit.cover,
+//     ),
+//   );
+// }
