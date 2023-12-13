@@ -5,11 +5,17 @@ import 'package:flutter/material.dart';
 
 class Global {
   static late StorageService storageService;
-  static Future<void> init() async {
+  static Future init() async {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform);
-    storageService = StorageService();
-    await storageService.init();
+    storageService = await storageService.init();
+    // if (storageService == null) {
+    //   // Initialize storageService if it's null
+    //   storageService = await StorageService.init();
+    // } else {
+    //   // Use the existing storageService if it's already initialized
+    //   storageService = await storageService!.init();
+    // }
   }
 }

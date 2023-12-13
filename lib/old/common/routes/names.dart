@@ -10,7 +10,4 @@ class AppRoutes {
 
   //~REGISTER PAGE
   static const String REGISTER = "/register";
-
-  //~REGISTER PAGE
-  static const String HOME_PAGE = "/home_page";
 }

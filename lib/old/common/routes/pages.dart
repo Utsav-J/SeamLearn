@@ -3,8 +3,6 @@ import 'package:bloc_app/common/routes/names.dart';
 import 'package:bloc_app/screens/app_page/application_page.dart';
 import 'package:bloc_app/screens/app_page/bloc/app_bloc.dart';
 import 'package:bloc_app/screens/global.dart';
-import 'package:bloc_app/screens/home/bloc/homepage_bloc.dart';
-import 'package:bloc_app/screens/home/homepage.dart';
 import 'package:bloc_app/screens/register/bloc/register_bloc.dart';
 import 'package:bloc_app/screens/register/register.dart';
 import 'package:bloc_app/screens/signin/bloc/sign_in_bloc.dart';
@@ -37,12 +35,6 @@ class AppPages {
         page: const ApplicationPage(),
         bloc: BlocProvider(create: (_) => AppBloc()),
       ),
-      PageEntity(
-          route: AppRoutes.HOME_PAGE,
-          page: const HomePage(),
-          bloc: BlocProvider(
-            create: (_) => HomePageBloc(),
-          ))
     ];
   }
 
@@ -59,8 +51,8 @@ class AppPages {
       var result = Routes().where((element) => element.route == settings.name);
       if (result.isNotEmpty) {
         // print("Valid route name: ${settings.name}");
-        bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
-        bool isLoggedIn = Global.storageService.getIsLoggedIn();
+        bool deviceFirstOpen = Global.storageService!.getDeviceFirstOpen();
+        bool isLoggedIn = Global.storageService!.getIsLoggedIn();
         if ((result.first.route == AppRoutes.INTIAL) && deviceFirstOpen) {
           //user is logged in
           if (isLoggedIn) {
