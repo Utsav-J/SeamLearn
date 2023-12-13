@@ -3,6 +3,7 @@ import 'package:bloc_app/screens/home/bloc/homepage_states.dart';
 import 'package:bloc_app/screens/home/widgets/home_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -17,14 +18,17 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: buildHomeAppBar(),
       body: BlocBuilder<HomePageBloc, HomePageStates>(
-        builder: (context, state) => Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            generateHomeText("user"),
-            buildSearchBar(),
-            buildParallaxView(context, state),
-            buildCatalogView(),
-          ],
+        builder: (context, state) => Container(
+          margin: EdgeInsets.symmetric(horizontal: 20.w),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              generateHomeText("user"),
+              buildSearchBar(),
+              buildParallaxView(context, state),
+              buildCatalogView(),
+            ],
+          ),
         ),
       ),
     );

@@ -44,7 +44,7 @@ Widget generateHomeText(
     children: [
       Container(
         margin: EdgeInsets.only(
-          left: 20.w,
+          // left: 20.w,
           top: 25.h,
         ),
         child: Text(
@@ -56,18 +56,12 @@ Widget generateHomeText(
           ),
         ),
       ),
-      Container(
-        margin: EdgeInsets.only(
-          left: 20.w,
-          top: 0,
-        ),
-        child: Text(
-          userName,
-          style: TextStyle(
-            fontSize: 28.sp,
-            fontWeight: FontWeight.bold,
-            color: usernameColor,
-          ),
+      Text(
+        userName,
+        style: TextStyle(
+          fontSize: 28.sp,
+          fontWeight: FontWeight.bold,
+          color: usernameColor,
         ),
       ),
     ],
@@ -79,7 +73,7 @@ Widget buildSearchBar() {
     mainAxisAlignment: MainAxisAlignment.spaceBetween,
     children: [
       Container(
-        margin: EdgeInsets.only(left: 20.w, top: 10.h, bottom: 10.h),
+        margin: EdgeInsets.only(top: 10.h, bottom: 10.h),
         width: 240.w,
         height: 45.h,
         decoration: BoxDecoration(
@@ -110,7 +104,7 @@ Widget buildSearchBar() {
                     color: AppColors.primaryText.withOpacity(0.5),
                   ),
                   floatingLabelAlignment: FloatingLabelAlignment.center,
-                  fillColor: Colors.red,
+                  // fillColor: Colors.red,
                   hintText: "Search among courses",
                 ),
               ),
@@ -121,7 +115,6 @@ Widget buildSearchBar() {
       GestureDetector(
         child: Expanded(
           child: Container(
-            margin: EdgeInsets.only(right: 15.w),
             width: 33.w,
             height: 40.h,
             decoration: BoxDecoration(
@@ -170,7 +163,6 @@ Widget _sliderContainer({String imagePath = "assets/icons/Image.png"}) {
     // same dimesions as the parent, so that it covers
     height: 170.h,
     width: 300.w,
-    margin: EdgeInsets.only(left: 20.w),
     decoration: BoxDecoration(
       image: DecorationImage(
         image: AssetImage(imagePath),
@@ -184,7 +176,7 @@ Widget buildCatalogView() {
   return Column(
     children: [
       Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.h),
+        margin: EdgeInsets.symmetric(vertical: 10.h),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -204,7 +196,6 @@ Widget buildCatalogView() {
         ),
       ),
       Container(
-        margin: EdgeInsets.symmetric(horizontal: 20.w),
         child: Row(
           children: [
             _reusableCatalogContainer(
