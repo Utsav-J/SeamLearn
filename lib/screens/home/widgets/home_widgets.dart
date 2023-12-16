@@ -96,7 +96,8 @@ Widget buildSearchBar() {
             SizedBox(
               width: 5.w,
             ),
-            Expanded(
+            SizedBox(
+              width: 200.w,
               child: TextField(
                 decoration: InputDecoration(
                   contentPadding: EdgeInsets.fromLTRB(0, 0, 0, 5.h),
@@ -113,17 +114,18 @@ Widget buildSearchBar() {
         ),
       ),
       GestureDetector(
-        child: Expanded(
-          child: Container(
-            width: 33.w,
-            height: 40.h,
-            decoration: BoxDecoration(
-              color: AppColors.primaryElement,
-              borderRadius: BorderRadius.circular(10.w),
-            ),
-            child: Image.asset(
-              "assets/icons/options.png",
-            ),
+        onTap: () {
+          print("Blue button tapped");
+        },
+        child: Container(
+          width: 33.w,
+          height: 40.h,
+          decoration: BoxDecoration(
+            color: AppColors.primaryElement,
+            borderRadius: BorderRadius.circular(10.w),
+          ),
+          child: Image.asset(
+            "assets/icons/options.png",
           ),
         ),
       )
