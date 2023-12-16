@@ -20,6 +20,10 @@ class StorageService {
     return await _prefs.setString(key, value);
   }
 
+  Future<bool> removeValue(String key) {
+    return _prefs.remove(key);
+  }
+
   bool getIsLoggedIn() {
     return _prefs.getString(AppConstants.STORAGE_USER_TOKEN_KEY) == null
         ? false

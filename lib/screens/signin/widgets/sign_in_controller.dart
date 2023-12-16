@@ -61,7 +61,8 @@ class SignInController {
 //
           if (user != null) {
             toastInfo(message: "Found you, user exists");
-            Global.storageService.setString(AppConstants.STORAGE_USER_TOKEN_KEY,
+            Global.storageService!.setString(
+                AppConstants.STORAGE_USER_TOKEN_KEY,
                 "123456"); // a random number for now //TODO implement firebase user token
             Navigator.of(context)
                 .pushNamedAndRemoveUntil("/application", (route) => false);

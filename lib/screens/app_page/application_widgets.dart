@@ -1,5 +1,6 @@
 import 'package:bloc_app/common/values/colors.dart';
 import 'package:bloc_app/screens/home/homepage.dart';
+import 'package:bloc_app/screens/profile_page/profile.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -9,7 +10,7 @@ Widget buildPage(int index) {
     Center(child: Text("Search")),
     Center(child: Text("Course")),
     Center(child: Text("Chats")),
-    Center(child: Text("Profile")),
+    ProfilePage(),
   ];
   return _widgets[index];
 }

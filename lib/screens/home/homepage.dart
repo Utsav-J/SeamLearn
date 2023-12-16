@@ -44,63 +44,7 @@ class _HomePageState extends State<HomePage> {
                       childAspectRatio: 16 / 9),
                   delegate: SliverChildBuilderDelegate(
                     (context, index) {
-                      return GestureDetector(
-                        onTap: () {},
-                        child: Container(
-                          decoration: BoxDecoration(
-                            gradient: const LinearGradient(
-                              colors: [Colors.transparent, Colors.black],
-                              begin: Alignment.bottomCenter,
-                              end: Alignment.center,
-                            ),
-                            image: const DecorationImage(
-                              image: AssetImage("assets/icons/Image.png"),
-                              fit: BoxFit.fill,
-                            ),
-                            borderRadius: BorderRadius.circular(8.w),
-                          ),
-                          constraints: BoxConstraints(maxHeight: 20.h),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Container(
-                                margin: EdgeInsets.symmetric(horizontal: 8.w),
-                                child: Text(
-                                  "Flutter Course",
-                                  // "This is a sample long text that you can try",
-                                  maxLines: 1,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    overflow: TextOverflow.ellipsis,
-                                    color: Colors.white.withOpacity(0.85),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                              SizedBox(
-                                height: 1.w,
-                              ),
-                              Container(
-                                margin: EdgeInsets.only(
-                                    left: 8.w, right: 8.w, bottom: 5.w),
-                                child: Text(
-                                  "Go to",
-                                  // "This is a sample long text that you can try",
-                                  maxLines: 1,
-                                  textAlign: TextAlign.left,
-                                  style: TextStyle(
-                                    fontSize: 10.sp,
-                                    overflow: TextOverflow.ellipsis,
-                                    color: Colors.white.withOpacity(0.7),
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      );
+                      return buildCourseGrid();
                     },
                     childCount: 4,
                   ),

@@ -4,12 +4,12 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
 class Global {
-  static late StorageService storageService;
+  static StorageService? storageService;
   static Future<void> init() async {
     WidgetsFlutterBinding.ensureInitialized();
     await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform);
     storageService = StorageService();
-    await storageService.init();
+    await storageService?.init();
   }
 }
