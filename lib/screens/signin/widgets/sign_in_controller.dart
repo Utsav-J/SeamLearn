@@ -8,7 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SignInController {
   final BuildContext context;
-  const SignInController({required this.context});
+  const SignInController({
+    required this.context,
+  });
 
   void handleSignIn(String type) async {
     try {
@@ -61,9 +63,9 @@ class SignInController {
 //
           if (user != null) {
             toastInfo(message: "Found you, user exists");
-            Global.storageService!.setString(
-                AppConstants.STORAGE_USER_TOKEN_KEY,
-                "123456"); // a random number for now //TODO implement firebase user token
+            Global.storageService.setString(AppConstants.STORAGE_USER_TOKEN_KEY,
+                "123456"); // a random number for now
+            if (!context.mounted) return;
             Navigator.of(context)
                 .pushNamedAndRemoveUntil("/application", (route) => false);
           }

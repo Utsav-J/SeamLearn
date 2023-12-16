@@ -132,7 +132,7 @@ class _WelcomeState extends State<Welcome> {
               //jump to the new screen
               // we need to make changes so that we dont have a go back button to the previous page anymore
               // Navigator.of(context).push(MaterialPageRoute(builder: (context) => const MyHomePage()));
-              Global.storageService!
+              Global.storageService
                   .setBool(AppConstants.STORAGE_DEVICE_OPEN_FIRST_TIME, true);
               // print(
               //     "The value is: ${Global.storageService!.getDeviceFirstOpen()}");

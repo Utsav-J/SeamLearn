@@ -69,8 +69,8 @@ class AppPages {
       var result = Routes().where((element) => element.route == settings.name);
       if (result.isNotEmpty) {
         // print("Valid route name: ${settings.name}");
-        bool deviceFirstOpen = Global.storageService!.getDeviceFirstOpen();
-        bool isLoggedIn = Global.storageService!.getIsLoggedIn();
+        bool deviceFirstOpen = Global.storageService.getDeviceFirstOpen();
+        bool isLoggedIn = Global.storageService.getIsLoggedIn();
         if ((result.first.route == AppRoutes.INTIAL) && deviceFirstOpen) {
           //user is logged in
           if (isLoggedIn) {
