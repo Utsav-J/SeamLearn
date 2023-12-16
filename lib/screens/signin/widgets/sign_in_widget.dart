@@ -40,7 +40,7 @@ Widget reusableText(String text) {
 Widget buildTextField(String text, String hintText, String textType,
     void Function(String value)? eventHandler) {
   return Container(
-      width: 325.w,
+      width: 270.w,
       height: 50.h,
       decoration: BoxDecoration(
         // color: Colors.grey,
@@ -56,9 +56,10 @@ Widget buildTextField(String text, String hintText, String textType,
             child: Image.asset('assets/icons/user.png'),
           ),
           SizedBox(
-            width: 260.w,
-            height: 50.h,
+            width: 200.w,
+            height: 60.h,
             child: TextField(
+              maxLines: 1,
               onChanged: (value) => eventHandler!(value),
               style: TextStyle(
                 fontFamily: "Avenir",

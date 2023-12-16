@@ -1,6 +1,6 @@
 import 'package:bloc_app/common/values/colors.dart';
 import 'package:bloc_app/common/values/constants.dart';
-import 'package:bloc_app/old/screens/global.dart';
+import 'package:bloc_app/screens/global.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -35,7 +35,7 @@ Widget buildLogOutButton(BuildContext context) {
                   ),
                 ),
                 onPressed: () {
-                  Global.storageService!
+                  Global.storageService
                       .removeValue(AppConstants.STORAGE_USER_TOKEN_KEY);
                 },
               ),
