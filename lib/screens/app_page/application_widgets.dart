@@ -1,5 +1,5 @@
 import 'package:bloc_app/common/values/colors.dart';
-import 'package:bloc_app/screens/home/homepage.dart';
+import 'package:bloc_app/screens/home_page/homepage.dart';
 import 'package:bloc_app/screens/profile_page/profile.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
