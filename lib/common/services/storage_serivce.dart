@@ -1,4 +1,7 @@
-import 'package:bloc_app/common/values/constants.dart';
+import 'dart:convert';
+
+import 'package:bloc_app/common/entities/entities.dart';
+import 'package:bloc_app/common/values/app_constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class StorageService {
@@ -29,5 +32,16 @@ class StorageService {
     return _prefs.getString(AppConstants.STORAGE_USER_TOKEN_KEY) == null
         ? false
         : true;
+  }
+
+  UserItem getUserProfile() {
+    var profileOffline =
+        _prefs.getString(AppConstants.STORAGE_USER_PROFILE_KEY) ?? "";
+    if (profileOffline.isNotEmpty) {
+      return UserItem.fromJson(jsonDecode(profileOffline));
+      // json decode takes the string and then converts it into json format
+      // shared prefs local storage will only take in the json format
+    }
+    return UserItem(); // empty user, not a valid user, we handle this
   }
 }

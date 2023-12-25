@@ -1,3 +1,4 @@
+import 'package:bloc_app/common/values/app_constants.dart';
 import 'package:bloc_app/common/widgets/toast_item.dart';
 import 'package:bloc_app/screens/register/bloc/register_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -40,6 +41,10 @@ class RegisterController {
       if (credentials.user != null) {
         await credentials.user?.sendEmailVerification();
         await credentials.user?.updateDisplayName(username);
+        //storing the URL for the photo avatar of theuser
+        String? userPhotoURL =
+            "${AppConstants.SERVER_API_URL}uploads/default.png";
+        await credentials.user?.updatePhotoURL(userPhotoURL);
         toastInfo(
             message:
                 "A verification email has been sent to your registered mail id. Activate it now");

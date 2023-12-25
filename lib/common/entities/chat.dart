@@ -1,5 +1,3 @@
-import 'package:intl/intl.dart';
-
 class SyncMessageRequestEntity {
   int? msgid;
   SyncMessageRequestEntity({
@@ -7,70 +5,70 @@ class SyncMessageRequestEntity {
   });
 
   Map<String, dynamic> toJson() => {
-    "msgid": msgid,
-  };
+        "msgid": msgid,
+      };
 }
 
 class CallRequestEntity {
-  String? call_type;//1. voice 2. video
-  String? to_token;
-  String? to_name;
-  String? to_avatar;
-  String? doc_id;
+  String? callType; //1. voice 2. video
+  String? toToken;
+  String? toName;
+  String? toAvatar;
+  String? docID;
 
   CallRequestEntity({
-    this.call_type,
-    this.to_token,
-    this.to_name,
-    this.to_avatar,
-    this.doc_id,
+    this.callType,
+    this.toToken,
+    this.toName,
+    this.toAvatar,
+    this.docID,
   });
 
   Map<String, dynamic> toJson() => {
-    "call_type": call_type,
-    "to_token": to_token,
-    "to_name": to_name,
-    "to_avatar": to_avatar,
-    "doc_id": doc_id,
-  };
+        "callType": callType,
+        "toToken": toToken,
+        "toName": toName,
+        "toAvatar": toAvatar,
+        "docID": docID,
+      };
 }
 
 class CallTokenRequestEntity {
   String? call_token;
-  String? to_token;
+  String? toToken;
 
   CallTokenRequestEntity({
     this.call_token,
-    this.to_token,
+    this.toToken,
   });
 
   Map<String, dynamic> toJson() => {
-    "call_token": call_token,
-    "to_token": to_token,
-  };
+        "call_token": call_token,
+        "toToken": toToken,
+      };
 }
 
 class ChatRequestEntity {
   String? content;
   String? type;
-  String? to_token;
+  String? toToken;
 
   ChatRequestEntity({
     this.content,
     this.type,
-    this.to_token,
+    this.toToken,
   });
 
   Map<String, dynamic> toJson() => {
-    "content": content,
-    "type": type,
-    "to_token": to_token,
-  };
+        "content": content,
+        "type": type,
+        "toToken": toToken,
+      };
 }
 
 class Chat {
   String? from_token;
-  String? to_token;
+  String? toToken;
   int? msgid;
   String? content;
   String? type;
@@ -79,7 +77,7 @@ class Chat {
 
   Chat({
     this.from_token,
-    this.to_token,
+    this.toToken,
     this.msgid,
     this.content,
     this.type,
@@ -87,10 +85,9 @@ class Chat {
     this.created_at,
   });
 
-  factory Chat.fromJson(Map<String, dynamic> json) =>
-      Chat(
+  factory Chat.fromJson(Map<String, dynamic> json) => Chat(
         from_token: json["from_token"],
-        to_token: json["to_token"],
+        toToken: json["toToken"],
         msgid: json["msgid"],
         content: json["content"],
         type: json["type"],
@@ -99,15 +96,14 @@ class Chat {
       );
 
   Map<String, dynamic> toJson() => {
-    "from_token": from_token ,
-    "to_token": to_token ,
-    "msgid": msgid ,
-    "content": content,
-    "type": type,
-    "status": status,
-    "created_at": created_at,
-  };
-
+        "from_token": from_token,
+        "toToken": toToken,
+        "msgid": msgid,
+        "content": content,
+        "type": type,
+        "status": status,
+        "created_at": created_at,
+      };
 }
 
 class MsgListcontent {
@@ -115,7 +111,7 @@ class MsgListcontent {
   String? from_token;
   String? from_name;
   String? from_avatar;
-  String? to_token;
+  String? toToken;
   String? content;
   String? type;
   int? status;
@@ -126,19 +122,18 @@ class MsgListcontent {
     this.from_token,
     this.from_name,
     this.from_avatar,
-    this.to_token,
+    this.toToken,
     this.content,
     this.type,
     this.status,
     this.created_at,
   });
 
-  factory MsgListcontent.fromJson(Map<String, dynamic> json) =>
-      MsgListcontent(
+  factory MsgListcontent.fromJson(Map<String, dynamic> json) => MsgListcontent(
         from_token: json["from_token"],
         from_avatar: json["from_avatar"],
         from_name: json["from_name"],
-        to_token: json["to_token"],
+        toToken: json["toToken"],
         msgid: json["msgid"],
         content: json["content"],
         type: json["type"],
@@ -147,16 +142,16 @@ class MsgListcontent {
       );
 
   Map<String, dynamic> toJson() => {
-    "from_token": from_token ,
-    "from_name": from_name ,
-    "from_avatar": from_avatar ,
-    "to_token": to_token ,
-    "msgid": msgid ,
-    "content": content,
-    "type": type,
-    "status": status,
-    "created_at": created_at,
-  };
+        "from_token": from_token,
+        "from_name": from_name,
+        "from_avatar": from_avatar,
+        "toToken": toToken,
+        "msgid": msgid,
+        "content": content,
+        "type": type,
+        "status": status,
+        "created_at": created_at,
+      };
 }
 
 class SyncMessageResponseEntity {
@@ -176,14 +171,15 @@ class SyncMessageResponseEntity {
         msg: json["msg"],
         data: json["data"] == null
             ? []
-            : List<MsgListcontent>.from(json["data"].map((x) => MsgListcontent.fromJson(x))),
+            : List<MsgListcontent>.from(
+                json["data"].map((x) => MsgListcontent.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
-    "counts": code ,
-    "msg": msg ,
-    "data": data == null
-        ? []
-        : List<dynamic>.from(data!.map((x) => x.toJson())),
-  };
+        "counts": code,
+        "msg": msg,
+        "data": data == null
+            ? []
+            : List<dynamic>.from(data!.map((x) => x.toJson())),
+      };
 }

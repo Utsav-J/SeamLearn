@@ -1,4 +1,5 @@
 import 'package:bloc_app/common/values/colors.dart';
+import 'package:bloc_app/common/values/text_theme.dart';
 import 'package:bloc_app/screens/home_page/bloc/homepage_bloc.dart';
 import 'package:bloc_app/screens/home_page/bloc/homepage_events.dart';
 import 'package:bloc_app/screens/home_page/bloc/homepage_states.dart';
@@ -42,27 +43,14 @@ Widget generateHomeText(
   return Column(
     crossAxisAlignment: CrossAxisAlignment.start,
     children: [
-      Container(
-        margin: EdgeInsets.only(
-          // left: 20.w,
-          top: 25.h,
-        ),
-        child: Text(
-          "Hello,",
-          style: TextStyle(
-            fontSize: 28.sp,
-            fontWeight: FontWeight.bold,
-            color: AppColors.primaryThirdElement,
-          ),
-        ),
+      SizedBox(height: 10.h),
+      AppText.largeHomeText(
+        "Hello,",
+        colorName: AppColors.primaryThirdElement,
       ),
-      Text(
-        userName,
-        style: TextStyle(
-          fontSize: 28.sp,
-          fontWeight: FontWeight.bold,
-          color: usernameColor,
-        ),
+      AppText.largeHomeText(
+        "user",
+        colorName: AppColors.primaryText,
       ),
     ],
   );

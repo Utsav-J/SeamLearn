@@ -1,6 +1,6 @@
 // import 'package:bloc_app/main.dart';
 import 'package:bloc_app/common/values/colors.dart';
-import 'package:bloc_app/common/values/constants.dart';
+import 'package:bloc_app/common/values/app_constants.dart';
 import 'package:bloc_app/screens/global.dart';
 import 'package:bloc_app/screens/welcome/bloc/welcome_bloc.dart';
 import 'package:bloc_app/screens/welcome/bloc/welcome_events.dart';

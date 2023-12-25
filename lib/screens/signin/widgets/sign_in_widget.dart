@@ -1,4 +1,6 @@
 // import 'package:flutter/cupertino.dart';
+// import 'dart:html';
+
 import 'package:bloc_app/common/values/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -40,7 +42,7 @@ Widget reusableText(String text) {
 Widget buildTextField(String text, String hintText, String textType,
     void Function(String value)? eventHandler) {
   return Container(
-      width: 270.w,
+      width: 290.w,
       height: 50.h,
       decoration: BoxDecoration(
         // color: Colors.grey,
@@ -56,12 +58,20 @@ Widget buildTextField(String text, String hintText, String textType,
             child: Image.asset('assets/icons/user.png'),
           ),
           SizedBox(
-            width: 200.w,
+            width: 227.w,
             height: 60.h,
+            // child: SingleChildScrollView(
+            //   scrollDirection: Axis.horizontal,
+
             child: TextField(
-              maxLines: 1,
+              // cursorHeight: 10,
+              clipBehavior: Clip.antiAlias,
+
+              expands: false,
+              // maxLines: ,
               onChanged: (value) => eventHandler!(value),
               style: TextStyle(
+                overflow: TextOverflow.visible,
                 fontFamily: "Avenir",
                 color: AppColors.primaryText,
                 fontWeight: FontWeight.normal,
@@ -91,7 +101,8 @@ Widget buildTextField(String text, String hintText, String textType,
               autocorrect: false,
               obscureText: textType == "password" ? true : false,
             ),
-          )
+          ),
+          // )
         ],
       ));
 }

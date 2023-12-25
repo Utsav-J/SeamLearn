@@ -1,10 +1,17 @@
-import 'package:bloc_app/common/values/constants.dart';
+import 'dart:convert';
+
+import 'package:bloc_app/common/apis/user_api.dart';
+import 'package:bloc_app/common/entities/entities.dart';
+import 'package:bloc_app/common/values/colors.dart';
+import 'package:bloc_app/common/values/app_constants.dart';
 import 'package:bloc_app/common/widgets/toast_item.dart';
 import 'package:bloc_app/screens/global.dart';
 import 'package:bloc_app/screens/signin/bloc/sign_in_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
+// import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_easyloading/flutter_easyloading.dart';
 
 class SignInController {
   final BuildContext context;
@@ -62,12 +69,24 @@ class SignInController {
 //  ~USER  EXISTS
 //
           if (user != null) {
-            toastInfo(message: "Found you, user exists");
+            // toastInfo(message: "Found you, user exists");
+            String? userDisplayName = user.displayName;
+            String? userEmail = user.email;
+            String? userID = user.uid;
+            String? userPhotoURL = user.photoURL;
+            print(userID);
+
+            LoginRequestEntity loginRequestEntity = LoginRequestEntity();
+            loginRequestEntity.name = userDisplayName;
+            loginRequestEntity.email = userEmail;
+            loginRequestEntity.open_id = userID;
+            loginRequestEntity.type = 1; // type 1 means EMAIL LOGIN
+
+            loginRequestEntity.avatar = userPhotoURL;
+            // print(userPhotoURL);
+            asyncPostAllData(loginRequestEntity);
             Global.storageService.setString(AppConstants.STORAGE_USER_TOKEN_KEY,
                 "123456"); // a random number for now
-            if (!context.mounted) return;
-            Navigator.of(context)
-                .pushNamedAndRemoveUntil("/application", (route) => false);
           }
 //
 //  ~USER DOESNT EXIST
@@ -89,5 +108,42 @@ class SignInController {
         }
       }
     } catch (e) {}
+  }
+
+  Future<void> asyncPostAllData(LoginRequestEntity loginRequestEntity) async {
+    EasyLoading.show(
+      indicator:
+          const CircularProgressIndicator(color: AppColors.primaryElement),
+      maskType: EasyLoadingMaskType.clear,
+      dismissOnTap: true,
+    );
+
+    var result = await UserAPI.login(loginRequestEntity: loginRequestEntity);
+    // print(result.toString());
+
+    if (result.code == 200) {
+      try {
+        Global.storageService.setString(
+          AppConstants
+              .STORAGE_USER_PROFILE_KEY, // stores the whole set of user data in the app constant
+          jsonEncode(result.data!),
+        );
+
+        Global.storageService.setString(
+          AppConstants
+              .STORAGE_USER_TOKEN_KEY, // stores the unique login token given for each login
+          result.data!.access_token!,
+        ); // need to make sure that is it not null here
+        EasyLoading.dismiss();
+        if (!context.mounted) return;
+        Navigator.of(context)
+            .pushNamedAndRemoveUntil("/application", (route) => false);
+      } catch (e) {
+        print("Local storage error: ${e.toString()}");
+      }
+    } else {
+      EasyLoading.dismiss();
+      toastInfo(message: "Unknown error occurred");
+    }
   }
 }
