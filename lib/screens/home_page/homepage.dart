@@ -1,8 +1,7 @@
 import 'package:bloc_app/screens/home_page/bloc/homepage_bloc.dart';
 import 'package:bloc_app/screens/home_page/bloc/homepage_states.dart';
+import 'package:bloc_app/screens/home_page/widgets/home_controller.dart';
 import 'package:bloc_app/screens/home_page/widgets/home_widgets.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,6 +14,14 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  late HomeController _homeController;
+  @override
+  void initState() {
+    super.initState();
+    _homeController = HomeController(context: context);
+    _homeController.init();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +33,7 @@ class _HomePageState extends State<HomePage> {
             slivers: [
               SliverToBoxAdapter(
                 // child: generateHomeText("user"),
-                child: generateHomeText("user"),
+                child: generateHomeText("${_homeController.userProfile.name}"),
               ),
               SliverToBoxAdapter(
                 child: buildSearchBar(),
