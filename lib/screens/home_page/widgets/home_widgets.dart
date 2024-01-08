@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-AppBar buildHomeAppBar() {
+AppBar buildHomeAppBar(String avatarURL) {
   return AppBar(
     title: Row(
       children: [
@@ -24,9 +24,10 @@ AppBar buildHomeAppBar() {
             // margin: EdgeInsets.only(right: 10.w),
             height: 36.h,
             width: 36.w,
-            decoration: const BoxDecoration(
+            decoration: BoxDecoration(
               image: DecorationImage(
-                image: AssetImage("assets/icons/person.png"),
+                image: NetworkImage(avatarURL),
+                // image: AssetImage("assets/icons/person.png"),
               ),
             ),
           ),
@@ -49,7 +50,7 @@ Widget generateHomeText(
         colorName: AppColors.primaryThirdElement,
       ),
       AppText.largeHomeText(
-        "user",
+        userName,
         colorName: AppColors.primaryText,
       ),
     ],

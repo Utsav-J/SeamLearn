@@ -25,7 +25,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: buildHomeAppBar(),
+      appBar: buildHomeAppBar(_homeController.userProfile.avatar.toString()),
       body: BlocBuilder<HomePageBloc, HomePageStates>(
         builder: (context, state) => Container(
           margin: EdgeInsets.symmetric(horizontal: 20.w),

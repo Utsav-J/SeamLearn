@@ -74,14 +74,16 @@ class SignInController {
             String? userEmail = user.email;
             String? userID = user.uid;
             String? userPhotoURL = user.photoURL;
-            print(userID);
+            // print(userID);
+            // print(userEmail);
+            print(userDisplayName);
+            // print(userPhotoURL);
 
             LoginRequestEntity loginRequestEntity = LoginRequestEntity();
             loginRequestEntity.name = userDisplayName;
             loginRequestEntity.email = userEmail;
             loginRequestEntity.open_id = userID;
             loginRequestEntity.type = 1; // type 1 means EMAIL LOGIN
-
             loginRequestEntity.avatar = userPhotoURL;
             // print(userPhotoURL);
             asyncPostAllData(loginRequestEntity);
@@ -117,7 +119,7 @@ class SignInController {
       maskType: EasyLoadingMaskType.clear,
       dismissOnTap: true,
     );
-
+    // print("This is one step before logging in");
     var result = await UserAPI.login(loginRequestEntity: loginRequestEntity);
     // print(result.toString());
 
